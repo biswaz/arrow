@@ -40,10 +40,13 @@ DJANGO_APPS = [
 
     # Useful template tags:
     # 'django.contrib.humanize',
+]
 
+DJANGO_ADMIN = [
     # Admin
     'django.contrib.admin',
 ]
+
 THIRD_PARTY_APPS = [
     'crispy_forms',  # Form layouts
     'allauth',  # registration
@@ -51,15 +54,23 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',  # registration
 ]
 
+MATERIALIZE = [
+    'material.theme.cyan',
+    'material',
+    'material.frontend',
+    'material.admin',
+]
+
 # Apps specific for this project go here.
 LOCAL_APPS = [
     # custom users app
     'arrow.users.apps.UsersConfig',
+    'manager',
     # Your stuff: custom apps go here
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + MATERIALIZE + DJANGO_ADMIN + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
