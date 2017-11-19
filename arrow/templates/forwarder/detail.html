@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load material_form %}
+
+{% block content %}
+
+{{ object.applicant }}<br>
+{{ object.type }}<br>
+{{ object.other }}<br>
+
+<form method="POST" class="viewform">
+  {% csrf_token %}
+  {% form form=form %}
+  {% endform %}
+    <button type="submit" name="_forward" class="btn btn-primary btn-lg">Forward</button>
+    <button type="submit" name="_reject" class="btn btn-primary btn-lg">Reject</button>
+</form>
+
+{% endblock %}

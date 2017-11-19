@@ -1,0 +1,64 @@
+body{
+  /*background: url("images/3.jpg") no-repeat center center fixed;
+   background-size: cover;*/
+   background: linear-gradient( 85deg, rgba(0,130,170,0.2),rgba(0,130,170,1)),
+   url("images/3.jpg") no-repeat center center fixed;
+   background-size: cover;
+
+    /*background: linear-gradient( 85deg, rgba(0,130,170,0),rgba(0,130,170,1)) ,
+  url('./images/1');*/
+
+/*85deg  , #bbdefb , #1976d2  */
+}
+.login form{
+
+
+}
+.form_bg {
+    background-color:#b3e5fc;
+
+    padding:20px;
+    border-radius:10px;
+    position: absolute;
+
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    height: 400px;
+}
+
+
+.form_bg h2{
+  text-align: center;
+}
+.brand-logo{
+  margin-left: 15px;
+  font-family:'Satisfy', cursive;
+
+}
+.righthand{
+  padding-right: 15px;
+}
+
+.align-center{
+    text-align:center;
+}
+.app_form{
+  margin-top: 50px;
+}
+.border{
+  padding: 15px;
+  padding-right: 25px;
+
+}
+.filter{
+  padding-left: 5px;
+  margin: 5px;
+}
+.header h5{
+  
+  padding-left: 5px;
+}

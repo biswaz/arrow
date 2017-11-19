@@ -4,9 +4,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-from material.frontend import urls as frontend_urls
 
-from manager import views
+from forwarder import views
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
@@ -21,9 +20,8 @@ urlpatterns = [
 
     #arrow urls start here
     url(r'^createApplication', views.ApplicationCreate.as_view()) ,
-
-    # Your stuff: custom urls includes go here
-    url(r'', include(frontend_urls)),
+    url(r'^listApplication', views.ListApplicationView.as_view()),
+    url(r'^application/(?P<pk>\d+)/$', views.ApplicationDetailView.as_view()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

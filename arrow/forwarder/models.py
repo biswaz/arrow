@@ -15,14 +15,14 @@ class Application(models.Model):
     ('NRSP', 'Non Receipt of Scholarship'),
     ('OTH', 'Other'),
     )
+
     applicant = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    
     type = models.CharField(max_length=4, choices=types)
     other = models.CharField(max_length=100, blank=True)#Description of other field
-
+    hierarchy_level = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.type
+        return self.applicant.name + "'s " + self.get_type_display() + " application"
 
 
 #Defines the path --HA01

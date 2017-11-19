@@ -48,7 +48,6 @@ DJANGO_ADMIN = [
 ]
 
 THIRD_PARTY_APPS = [
-    'crispy_forms',  # Form layouts
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
@@ -57,15 +56,15 @@ THIRD_PARTY_APPS = [
 MATERIALIZE = [
     'material.theme.cyan',
     'material',
-    'material.frontend',
     'material.admin',
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
     # custom users app
-    'arrow.users.apps.UsersConfig',
-    'manager',
+    'users.apps.UsersConfig',
+    'forwarder.apps.ForwarderConfig'
+    #'forwarder'
     # Your stuff: custom apps go here
 ]
 

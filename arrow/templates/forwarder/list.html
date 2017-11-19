@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load material_form %}
+
+{% block contentx %}
+
+<ol>
+{% for application in object_list %}
+<a href="/application/{{ application.pk }}">
+  <li>{{ application.applicant.name }} 's  {{ application.get_type_display }} application</li>
+</a>
+{% empty %}
+ <li>Nothing yet :(</li>
+{% endfor %}
+</ol>
+
+{% endblock %}
+
+{% block head %}
+<style media="screen">
+  body{
+    background: white;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row ">
+
+
+  <div class="col s12 m3 l2">
+    <div class="card-panel green lighten-1 ">
+      <div class=" header row white z-depth-2">
+        <h5 >FILTER</h5>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 white z-depth-3">
+          <select class="z-dpeth-3">
+            <option value="" disabled selected>Filter by</option>
+            <option value="1">Year</option>
+            <option value="2">Semester</option>
+            <option value="3">Date</option>
+          </select>
+
+        </div>
+
+
+
+    </div>
+    </div>
+
+
+
+    </div>
+
+    <div class="col s12 m9 l10  ">
+      <div class="card-panel green lighten-1">
+        <div class=" header row white z-depth-4">
+            <h5>REQUESTS</h5>
+
+        </div>
+        <ul class="collapsible popout  z-depth-4" data-collapsible="accordion">
+          {% for application in object_list %}
+
+          <a href="/application/{{ application.pk }}">
+            <li>
+              <div class="collapsible-header z-depth-3">{{ application.applicant.name }} 's  {{ application.get_type_display }} application</div>
+              <div class="collapsible-body">
+                <span>{{ application.applicant.name }} 's  {{ application.get_type_display }} application</span>
+              </div>
+            </li>
+          </a>
+
+          {% empty %}
+           <li>Nothing yet :(</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+</div>
+{% endblock %}

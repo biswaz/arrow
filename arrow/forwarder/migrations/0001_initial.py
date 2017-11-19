@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('sl_no', models.IntegerField()),
                 ('date_created', models.DateTimeField()),
                 ('remarks', models.CharField(blank=True, max_length=100)),
-                ('application', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='manager.Application')),
+                ('application', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forwarder.Application')),
             ],
         ),
     ]
