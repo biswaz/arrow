@@ -51,6 +51,8 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'crispy_forms',
+
 ]
 
 MATERIALIZE = [
@@ -261,12 +263,13 @@ AUTHENTICATION_BACKENDS = [
 
 # Some really nice defaults
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
 ACCOUNT_ADAPTER = 'arrow.users.adapters.AccountAdapter'
 SOCIALACCOUNT_ADAPTER = 'arrow.users.adapters.SocialAccountAdapter'
+ACCOUNT_SESSION_REMEMBER = True
 
 # Custom user app defaults
 # Select the correct user model

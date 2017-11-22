@@ -5,10 +5,12 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from allauth.account import views as allauth_views
+
 from forwarder import views
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
+    url(r'^$', allauth_views.login, name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Django Admin, use {% url 'admin:index' %}
@@ -20,8 +22,9 @@ urlpatterns = [
 
     #arrow urls start here
     url(r'^createApplication', views.ApplicationCreate.as_view()) ,
-    url(r'^listApplication', views.ListApplicationView.as_view()),
-    url(r'^application/(?P<pk>\d+)/$', views.ApplicationDetailView.as_view()),
+    url(r'^listApplication', views.ListApplicationView.as_view(), name="list-application"),
+    url(r'^application/(?P<pk>\d+)/$', views.ApplicationDetailView.as_view(), name="application"),
+    url(r'^pdf_dl/(?P<pk>\d+)/$', views.pdf_dl),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

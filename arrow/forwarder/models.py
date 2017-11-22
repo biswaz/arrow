@@ -4,8 +4,8 @@ from arrow.users.models import User
 # Create your models here.
 class Application(models.Model):
     types = (
-    ('SSLC', 'SSLC'),
-    ('+2', '+2'),
+    ('SSLC', 'SSLC Certificate'),
+    ('+2', '+2 Certificate'),
     ('EMB', 'Embassy Attestation'),
     ('BNK1', 'Bank Loan - 1 Year'),
     ('BNK4', 'Bank Loan - 4 Years'),
@@ -18,7 +18,7 @@ class Application(models.Model):
 
     applicant = models.ForeignKey('users.User', on_delete=models.CASCADE)
     type = models.CharField(max_length=4, choices=types)
-    other = models.CharField(max_length=100, blank=True)#Description of other field
+    other = models.CharField(max_length=100, blank=True, verbose_name="Specify the application")#Description of other field
     hierarchy_level = models.IntegerField(default=0)
 
     def __str__(self):

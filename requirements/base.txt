@@ -43,7 +43,6 @@ pytz==2017.3
 django-redis==4.8.0
 redis>=2.10.5
 
-
-
 # Your custom requirements go here
 django-material==1.1.1
+reportlab==3.4.0

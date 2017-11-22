@@ -1,14 +1,57 @@
 {% extends "base.html" %}
 {% load material_form %}
 
+{% block head %}
+<style media="screen">
+  body{
+    background: white;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<form method="POST" class="viewform">
-  {% csrf_token %}
-  {% form form=form %}
-  {% endform %}
-    <button type="submit" name="_submit" class="btn btn-primary btn-lg">Submit</button>
-</form>
 
+<div class="row container margin">
+   <form class="col s12 z-depth-4" method="post">
+     {% csrf_token %}
+     <div class="row border">
+       <div class="input-field col s12">
+         <i class="material-icons prefix">account_circle</i>
+         <input id="icon_prefix" type="text" class="validate" value="{{ user.name }}" readonly>
+         <label for="icon_prefix">Name</label>
+       </div>
+       <div class="input-field col s12">
+         <i class="material-icons prefix">assignment_ind</i>
+         <input id="admission_number" type="text" class="validate" value="{{ user.admn_no }}" readonly>
+         <label for="admission_number">Admission number</label>
+       </div>
+       <div class="input-field col s12">
+         <i class="material-icons prefix">location_city</i>
+         <input id="department" type="text" class="validate" value="{{ user.branch }}" readonly>
+         <label for="department">Department</label>
+       </div>
+       <div class="input-field col s12">
+         <i class="material-icons prefix">local_library</i>
+         <input id="Semester" type="text" class="validate" value="{{ user.semester }}" readonly>
+         <label for="Semester">Semester</label>
+       </div>
+       <div class="input-field col s12">
+         <i class="material-icons prefix">face</i>
+         <input id="date of birth" type="text" class="datepicker validate">
+         <label for="date of birth">Date of birth</label>
+       </div>
+       <div class="input-field col s12">
+         <i class="material-icons prefix">supervisor_account</i>
+         <input id="guardian_name" type="text" class="validate" value="{{ user.parent_name }}" readonly>
+         <label for="guardian_name">Parent name</label>
+       </div>
 
+         {% form form=form %}
+         {% endform %}
+         
+       <button type="submit" name="_submit" class="btn btn-primary btn-lg">Submit</button>
+     </div>
+   </form>
+ </div>
 
 {% endblock %}

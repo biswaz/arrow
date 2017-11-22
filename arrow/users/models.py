@@ -26,8 +26,8 @@ class User(AbstractUser):
     designation = models.CharField(max_length=2, choices=designations)
 
     #students
-    admn_no = models.IntegerField(null=True)
-    semester = models.IntegerField(null=True)
+    admn_no = models.IntegerField(null=True, blank=True)
+    semester = models.IntegerField(null=True, blank=True)
     branch = models.CharField(max_length=3, choices=branches, blank=True)
     parent_name = models.CharField(_('Name of parent'), blank=True, max_length=255)
 

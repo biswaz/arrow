@@ -1,18 +1,102 @@
 {% extends "base.html" %}
 {% load material_form %}
 
+{% block head %}
+<style media="screen">
+  body{
+    background: white;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 
-{{ object.applicant }}<br>
-{{ object.type }}<br>
-{{ object.other }}<br>
+<div class="container margin">
+  <div class="row z-depth-3 ">
+    <div class="col s6  white">
+      <div class="section">
+        <h5>Name</h5>
+        <p>{{object.applicant.name}}</p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Admission Number</h5>
+        <p>{{object.applicant.admn_no}}</p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Date of birth</h5>
+        <p></p>
+      </div>
+    </div>
+    <div class="col s6 white">
+      <div class="section">
+        <h5>Department</h5>
+        <p>{{object.applicant.branch}}</p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Semester</h5>
+        <p>{{object.applicant.semester}}</p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Guardian name</h5>
+        <p>{{object.applicant.parent_name}}</p>
+      </div>
+    </div>
+    <div class="col s12 white">
+      <div class="divider">
 
-<form method="POST" class="viewform">
-  {% csrf_token %}
-  {% form form=form %}
-  {% endform %}
-    <button type="submit" name="_forward" class="btn btn-primary btn-lg">Forward</button>
-    <button type="submit" name="_reject" class="btn btn-primary btn-lg">Reject</button>
-</form>
+      </div>
+      <div class="section">
+        <h5>Application type and details</h5>
+        <p>{{object.get_type_display}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel cyan darken-4  ">
+          <span class="white-text">
+              {% if user.designation == 'st' %}
+                {% if object.hierarchy_level == 0 %}
+                  <h5>Application not yet forwared by tutor</h5>
+                {% elif object.hierarchy_level == 1 %}
+                  <h5>Application forwared by tutor</h5>
+                {% elif object.hierarchy_level == 2 %}
+                  <h5>Application forwared by HOD</h5>
+                {% elif object.hierarchy_level == 3 %}
+                  <h5>Application accepted at Office</h5>
+                {% endif %}
+              {% elif user.designation == 'of' %}
+                <a href="/pdf_dl/{{object.pk}}" class="insidecard"><h5>Download PDF</h5></a>
+              {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+  {% if user.designation != "st" %}
+  <div class="align-center">
+    <form method="POST" class="viewform">
+      {% csrf_token %}
+      {% form form=form %}
+      {% endform %}
+    <button type="submit" class=" waves-effect waves-light btn" name="_forward">
+      {% if user.designation == "of" %}
+      ACCEPT
+      {% else %}
+      FORWARD
+      {% endif %}
+      <i class="material-icons right">check</i>
+    </button>
+    <button type="submit" class="waves-effect waves-light btn red" name="_reject">REJECT<i class="material-icons right">close</i></button>
+    </form>
+  </div>
+
+  {% endif %}
+
+</div>
 {% endblock %}

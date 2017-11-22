@@ -1,33 +1,25 @@
 body{
-  /*background: url("images/3.jpg") no-repeat center center fixed;
-   background-size: cover;*/
-   background: linear-gradient( 85deg, rgba(0,130,170,0.2),rgba(0,130,170,1)),
-   url("images/3.jpg") no-repeat center center fixed;
-   background-size: cover;
-
-    /*background: linear-gradient( 85deg, rgba(0,130,170,0),rgba(0,130,170,1)) ,
-  url('./images/1');*/
-
-/*85deg  , #bbdefb , #1976d2  */
+  background:url("../images/3.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
-.login form{
 
-
-}
 .form_bg {
-    background-color:#b3e5fc;
+  background-color:#ffffff3d;
+  padding:20px;
+  border-radius:10px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 350px;
+  height: 400px;
+}
 
-    padding:20px;
-    border-radius:10px;
-    position: absolute;
 
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 350px;
-    height: 400px;
+a.secondaryAction, label{
+    color: black;
 }
 
 
@@ -44,9 +36,9 @@ body{
 }
 
 .align-center{
-    text-align:center;
+  text-align:center;
 }
-.app_form{
+.margin{
   margin-top: 50px;
 }
 .border{
@@ -59,6 +51,14 @@ body{
   margin: 5px;
 }
 .header h5{
-  
+
   padding-left: 5px;
+}
+
+.fullheight{
+  min-height: 100vh !important;
+}
+
+.insidecard{
+  color: white;
 }
